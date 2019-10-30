@@ -15,7 +15,10 @@ impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut com_nums = vec![];
         for x in &nums {
-            com_nums.push(target - *x)
+            let com = target - *x;
+            if com != *x {
+                com_nums.push(com)
+            }
         }
         let mut result_nums = vec![];
         for (i, x) in nums.iter().enumerate() {
@@ -40,4 +43,9 @@ fn test_b() {
 #[test]
 fn test_c() {
     assert_eq!(Solution::two_sum(vec![-9, 0, -2, -15], -11), vec![0, 2]);
+}
+
+#[test]
+fn test_d() {
+    assert_eq!(Solution::two_sum(vec![3, 2, 4], 6), vec![1, 2]);
 }
