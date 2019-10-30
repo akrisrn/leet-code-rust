@@ -1,4 +1,5 @@
 use crate::Solution;
+use std::collections::HashMap;
 
 /// https://leetcode.com/problems/two-sum/
 ///
@@ -27,6 +28,18 @@ impl Solution {
             result_nums.retain(|&x| nums[x as usize] * 2 != target)
         }
         result_nums
+    }
+
+    pub fn two_sum_0ms(nums: Vec<i32>, target: i32) -> Vec<i32> {
+        let mut seen = HashMap::new();
+        for (i, num) in nums.iter().enumerate() {
+            if seen.contains_key(num) {
+                return vec![seen[num] as i32, i as i32];
+            } else {
+                seen.insert(target - *num, i);
+            }
+        }
+        return vec![];
     }
 }
 
