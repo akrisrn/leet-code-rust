@@ -15,17 +15,17 @@ use std::collections::HashMap;
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut com_nums = vec![];
-        for x in &nums {
-            com_nums.push(target - *x)
+        for num in &nums {
+            com_nums.push(target - *num)
         }
         let mut result_nums = vec![];
-        for (i, x) in nums.iter().enumerate() {
-            if com_nums.contains(x) {
+        for (i, num) in nums.iter().enumerate() {
+            if com_nums.contains(num) {
                 result_nums.push(i as i32)
             }
         }
         if result_nums.len() == 3 {
-            result_nums.retain(|&x| nums[x as usize] * 2 != target)
+            result_nums.retain(|&i| nums[i as usize] * 2 != target)
         }
         result_nums
     }
