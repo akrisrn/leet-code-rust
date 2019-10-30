@@ -15,16 +15,16 @@ impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut com_nums = vec![];
         for x in &nums {
-            let com = target - *x;
-            if com != *x {
-                com_nums.push(com)
-            }
+            com_nums.push(target - *x)
         }
         let mut result_nums = vec![];
         for (i, x) in nums.iter().enumerate() {
             if com_nums.contains(x) {
                 result_nums.push(i as i32)
             }
+        }
+        if result_nums.len() == 3 {
+            result_nums.retain(|&x| nums[x as usize] * 2 != target)
         }
         result_nums
     }
@@ -48,4 +48,11 @@ fn test_c() {
 #[test]
 fn test_d() {
     assert_eq!(Solution::two_sum(vec![3, 2, 4], 6), vec![1, 2]);
+}
+
+#[test]
+fn test_e() {
+    // > and you may not use the same element twice.
+    // WRRRRRRRRRY.jpg
+    assert_eq!(Solution::two_sum(vec![3, 3], 6), vec![0, 1]);
 }
