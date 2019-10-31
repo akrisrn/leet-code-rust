@@ -1,4 +1,5 @@
 use crate::Solution;
+use std::collections::HashMap;
 
 /// https://leetcode.com/problems/roman-to-integer/
 ///
@@ -108,6 +109,30 @@ impl Solution {
             }
         }
         sum
+    }
+
+    pub fn roman_to_int_0ms(s: String) -> i32 {
+        let map: HashMap<char, i32> = vec![
+            ('I', 1),
+            ('V', 5),
+            ('X', 10),
+            ('L', 50),
+            ('C', 100),
+            ('D', 500),
+            ('M', 1000),
+        ].into_iter().collect();
+        let mut last = 10000;
+        let mut result = 0;
+        s.chars().for_each(|c| {
+            let current = *map.get(&c).unwrap();
+            if current <= last {
+                result += current;
+            } else {
+                result += current - 2 * last;
+            }
+            last = current;
+        });
+        result
     }
 }
 
