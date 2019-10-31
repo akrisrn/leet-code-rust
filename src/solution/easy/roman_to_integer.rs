@@ -49,5 +49,89 @@ use crate::Solution;
 /// > Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 ///
 impl Solution {
-    pub fn roman_to_int(s: String) -> i32 {}
+    pub fn roman_to_int(s: String) -> i32 {
+        let mut sum = 0;
+        let mut next_sub = false;
+        for ch in s.chars() {
+            match ch {
+                'I' => {
+                    sum += 1;
+                    next_sub = true
+                }
+                'V' => {
+                    sum += 5;
+                    if next_sub {
+                        sum -= 2;
+                        next_sub = false
+                    }
+                }
+                'X' => {
+                    sum += 10;
+                    if next_sub {
+                        sum -= 2;
+                        next_sub = false
+                    } else {
+                        next_sub = true
+                    }
+                }
+                'L' => {
+                    sum += 50;
+                    if next_sub {
+                        sum -= 20;
+                        next_sub = false
+                    }
+                }
+                'C' => {
+                    sum += 100;
+                    if next_sub {
+                        sum -= 20;
+                        next_sub = false
+                    } else {
+                        next_sub = true
+                    }
+                }
+                'D' => {
+                    sum += 500;
+                    if next_sub {
+                        sum -= 200;
+                        next_sub = false
+                    }
+                }
+                'M' => {
+                    sum += 1000;
+                    if next_sub {
+                        sum -= 200;
+                        next_sub = false
+                    }
+                }
+                _ => {}
+            }
+        }
+        sum
+    }
+}
+
+#[test]
+fn test_a() {
+    assert_eq!(Solution::roman_to_int("III".to_string()), 3);
+}
+
+#[test]
+fn test_b() {
+    assert_eq!(Solution::roman_to_int("IV".to_string()), 4);
+}
+
+#[test]
+fn test_c() {
+    assert_eq!(Solution::roman_to_int("IX".to_string()), 9);
+}
+
+#[test]
+fn test_d() {
+    assert_eq!(Solution::roman_to_int("LVIII".to_string()), 58);
+}
+
+#[test]
+fn test_e() {
+    assert_eq!(Solution::roman_to_int("MCMXCIV".to_string()), 1994);
 }
