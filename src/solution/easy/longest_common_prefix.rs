@@ -20,8 +20,11 @@ use crate::Solution;
 ///
 impl Solution {
     pub fn longest_common_prefix(strs: Vec<String>) -> String {
-        if strs.len() < 2 {
+        if strs.is_empty() {
             return "".to_string();
+        }
+        if strs.len() == 1 {
+            return strs[0].to_string();
         }
         let mut prefix_chars: Vec<u8> = strs[0].bytes().collect();
         for str in &strs[1..] {
@@ -55,4 +58,9 @@ fn test_b() {
 #[test]
 fn test_c() {
     assert_eq!(Solution::longest_common_prefix(vec![]), "");
+}
+
+#[test]
+fn test_d() {
+    assert_eq!(Solution::longest_common_prefix(vec!["a".to_string()]), "a");
 }
