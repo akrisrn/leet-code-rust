@@ -23,8 +23,7 @@ use crate::Solution;
 ///
 impl Solution {
     pub fn reverse(x: i32) -> i32 {
-        let bytes = x.to_string();
-        let mut bytes = bytes.into_bytes();
+        let mut bytes = x.to_string().into_bytes();
         bytes.reverse();
         let len = bytes.len();
         if bytes[len - 1] == b'-' {
