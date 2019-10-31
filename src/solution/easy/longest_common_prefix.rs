@@ -28,7 +28,9 @@ impl Solution {
         }
         let mut prefix_chars: Vec<u8> = strs[0].bytes().collect();
         for str in &strs[1..] {
-            for (i, ch) in str.bytes().enumerate() {
+            let bytes = str.bytes();
+            let len = bytes.len();
+            for (i, ch) in bytes.enumerate() {
                 if i < prefix_chars.len() {
                     if prefix_chars[i] != ch {
                         prefix_chars = prefix_chars[..i].to_owned();
@@ -39,6 +41,9 @@ impl Solution {
                 } else {
                     break;
                 }
+            }
+            if len < prefix_chars.len() {
+                prefix_chars = prefix_chars[..len].to_owned()
             }
         }
         String::from_utf8(prefix_chars).unwrap()
@@ -63,4 +68,9 @@ fn test_c() {
 #[test]
 fn test_d() {
     assert_eq!(Solution::longest_common_prefix(vec!["a".to_string()]), "a");
+}
+
+#[test]
+fn test_e() {
+    assert_eq!(Solution::longest_common_prefix(vec!["aa".to_string(), "a".to_string()]), "a");
 }
