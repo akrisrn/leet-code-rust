@@ -4,3 +4,4 @@ mod two_sum_iv;
 mod reverse_integer;
 mod palindrome_number;
 mod roman_to_integer;
+mod longest_common_prefix;
