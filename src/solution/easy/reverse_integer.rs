@@ -31,8 +31,8 @@ impl Solution {
             bytes.insert(0, b'-');
         }
         match String::from_utf8(bytes).unwrap().parse::<i32>() {
-            Ok(x) => { x }
-            Err(_) => { 0 }
+            Ok(x) => x,
+            Err(_) => 0,
         }
     }
 }

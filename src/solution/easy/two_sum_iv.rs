@@ -1,6 +1,6 @@
 use crate::Solution;
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 
 /// https://leetcode.com/problems/two-sum-iv-input-is-a-bst/
 ///

@@ -120,7 +120,9 @@ impl Solution {
             ('C', 100),
             ('D', 500),
             ('M', 1000),
-        ].into_iter().collect();
+        ]
+        .into_iter()
+        .collect();
         let mut last = 10000;
         let mut result = 0;
         s.chars().for_each(|c| {

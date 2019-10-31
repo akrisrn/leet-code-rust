@@ -74,12 +74,26 @@ impl Solution {
 
 #[test]
 fn test_a() {
-    assert_eq!(Solution::longest_common_prefix(vec!["flower".to_string(), "flow".to_string(), "flight".to_string()]), "fl");
+    assert_eq!(
+        Solution::longest_common_prefix(vec![
+            "flower".to_string(),
+            "flow".to_string(),
+            "flight".to_string()
+        ]),
+        "fl"
+    );
 }
 
 #[test]
 fn test_b() {
-    assert_eq!(Solution::longest_common_prefix(vec!["dog".to_string(), "racecar".to_string(), "car".to_string()]), "");
+    assert_eq!(
+        Solution::longest_common_prefix(vec![
+            "dog".to_string(),
+            "racecar".to_string(),
+            "car".to_string()
+        ]),
+        ""
+    );
 }
 
 #[test]
@@ -94,5 +108,8 @@ fn test_d() {
 
 #[test]
 fn test_e() {
-    assert_eq!(Solution::longest_common_prefix(vec!["aa".to_string(), "a".to_string()]), "a");
+    assert_eq!(
+        Solution::longest_common_prefix(vec!["aa".to_string(), "a".to_string()]),
+        "a"
+    );
 }
