@@ -24,5 +24,24 @@ use crate::Solution;
 /// > Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 ///
 impl Solution {
-    pub fn is_palindrome(x: i32) -> bool {}
+    pub fn is_palindrome(x: i32) -> bool {
+        let mut bytes = x.to_string().into_bytes();
+        bytes.reverse();
+        String::from_utf8(bytes).unwrap() == x.to_string()
+    }
+}
+
+#[test]
+fn test_a() {
+    assert!(Solution::is_palindrome(121));
+}
+
+#[test]
+fn test_b() {
+    assert!(!Solution::is_palindrome(-121));
+}
+
+#[test]
+fn test_c() {
+    assert!(!Solution::is_palindrome(10));
 }
