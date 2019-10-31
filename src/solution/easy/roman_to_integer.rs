@@ -51,58 +51,58 @@ use crate::Solution;
 impl Solution {
     pub fn roman_to_int(s: String) -> i32 {
         let mut sum = 0;
-        let mut next_sub = false;
+        let mut pre_ch = ' ';
         for ch in s.chars() {
             match ch {
                 'I' => {
                     sum += 1;
-                    next_sub = true
+                    pre_ch = 'I'
                 }
                 'V' => {
                     sum += 5;
-                    if next_sub {
+                    if pre_ch == 'I' {
                         sum -= 2;
-                        next_sub = false
                     }
+                    pre_ch = ' '
                 }
                 'X' => {
                     sum += 10;
-                    if next_sub {
+                    if pre_ch == 'I' {
                         sum -= 2;
-                        next_sub = false
+                        pre_ch = ' '
                     } else {
-                        next_sub = true
+                        pre_ch = 'X'
                     }
                 }
                 'L' => {
                     sum += 50;
-                    if next_sub {
+                    if pre_ch == 'X' {
                         sum -= 20;
-                        next_sub = false
                     }
+                    pre_ch = ' '
                 }
                 'C' => {
                     sum += 100;
-                    if next_sub {
+                    if pre_ch == 'X' {
                         sum -= 20;
-                        next_sub = false
+                        pre_ch = ' '
                     } else {
-                        next_sub = true
+                        pre_ch = 'C'
                     }
                 }
                 'D' => {
                     sum += 500;
-                    if next_sub {
+                    if pre_ch == 'C' {
                         sum -= 200;
-                        next_sub = false
                     }
+                    pre_ch = ' '
                 }
                 'M' => {
                     sum += 1000;
-                    if next_sub {
+                    if pre_ch == 'C' {
                         sum -= 200;
-                        next_sub = false
                     }
+                    pre_ch = ' '
                 }
                 _ => {}
             }
@@ -134,4 +134,9 @@ fn test_d() {
 #[test]
 fn test_e() {
     assert_eq!(Solution::roman_to_int("MCMXCIV".to_string()), 1994);
+}
+
+#[test]
+fn test_f() {
+    assert_eq!(Solution::roman_to_int("DCXXI".to_string()), 621);
 }
