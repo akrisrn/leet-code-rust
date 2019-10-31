@@ -48,6 +48,28 @@ impl Solution {
         }
         String::from_utf8(prefix_chars).unwrap()
     }
+
+    pub fn longest_common_prefix_another(strs: Vec<String>) -> String {
+        if strs.len() < 1 {
+            return String::new();
+        }
+        let mut prefix = strs.get(0).unwrap().to_string();
+        for i in 1..strs.len() {
+            let mut match_char: Vec<char> = Vec::new();
+            for (c1, c2) in prefix.chars().zip(strs[i].chars()) {
+                if c1 == c2 {
+                    match_char.push(c1);
+                } else {
+                    break;
+                }
+            }
+            prefix = match_char.iter().collect();
+            if prefix.len() == 0 {
+                return String::new();
+            }
+        }
+        return prefix;
+    }
 }
 
 #[test]
