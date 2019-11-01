@@ -44,7 +44,7 @@ impl Solution {
                     if let Some(ch) = stack.pop() {
                         if let Some(&c) = map.get(&ch) {
                             if c == char {
-                                break;
+                                continue;
                             }
                         }
                     }
@@ -55,7 +55,11 @@ impl Solution {
                 }
             }
         }
-        true
+        if stack.is_empty() {
+            true
+        } else {
+            false
+        }
     }
 }
 
@@ -87,4 +91,9 @@ fn test_e() {
 #[test]
 fn test_f() {
     assert!(Solution::is_valid("".to_string()));
+}
+
+#[test]
+fn test_g() {
+    assert!(!Solution::is_valid("[".to_string()));
 }
