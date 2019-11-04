@@ -21,5 +21,42 @@ use crate::Solution;
 /// > Output: -1
 ///
 impl Solution {
-    pub fn str_str(haystack: String, needle: String) -> i32 {}
+    pub fn str_str(haystack: String, needle: String) -> i32 {
+        if needle.is_empty() {
+            return 0;
+        }
+        let mut index = -1;
+        let mut needle_index = 0;
+        let needle_bytes = needle.as_bytes();
+        for (i, byte) in haystack.bytes().enumerate() {
+            if byte == needle_bytes[needle_index] {
+                if needle_index == 0 {
+                    index = i as i32;
+                }
+                needle_index += 1;
+                if needle_index >= needle_bytes.len() {
+                    break;
+                }
+            } else {
+                index = -1;
+                needle_index = 0;
+            }
+        }
+        index
+    }
+}
+
+#[test]
+fn test_a() {
+    assert_eq!(Solution::str_str("hello".to_string(), "ll".to_string()), 2)
+}
+
+#[test]
+fn test_b() {
+    assert_eq!(Solution::str_str("aaaaa".to_string(), "bba".to_string()), -1)
+}
+
+#[test]
+fn test_c() {
+    assert_eq!(Solution::str_str("hello".to_string(), "".to_string()), 0)
 }
