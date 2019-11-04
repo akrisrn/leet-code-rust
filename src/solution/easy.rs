@@ -7,3 +7,4 @@ mod two_sum_ii;
 mod two_sum_iv;
 mod valid_parentheses;
 mod merge_two_sorted_lists;
+mod remove_duplicates_from_sorted_array;
