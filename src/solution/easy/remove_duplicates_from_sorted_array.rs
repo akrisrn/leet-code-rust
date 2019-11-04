@@ -50,6 +50,12 @@ impl Solution {
         }
         nums.len() as i32
     }
+
+    // fxxk
+    pub fn remove_duplicates_0ms(nums: &mut Vec<i32>) -> i32 {
+        nums.dedup();
+        nums.len() as i32
+    }
 }
 
 #[test]
