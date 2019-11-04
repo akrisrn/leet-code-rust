@@ -1,10 +1,10 @@
-mod p1_two_sum;
-mod p7_reverse_integer;
-mod p9_palindrome_number;
 mod p13_roman_to_integer;
 mod p14_longest_common_prefix;
+mod p167_two_sum_ii;
+mod p1_two_sum;
 mod p20_valid_parentheses;
 mod p21_merge_two_sorted_lists;
 mod p26_remove_duplicates_from_sorted_array;
-mod p167_two_sum_ii;
 mod p653_two_sum_iv;
+mod p7_reverse_integer;
+mod p9_palindrome_number;

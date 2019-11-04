@@ -32,11 +32,9 @@ use std::collections::HashMap;
 ///
 impl Solution {
     pub fn is_valid(s: String) -> bool {
-        let map: HashMap<char, char> = vec![
-            ('(', ')'),
-            ('{', '}'),
-            ('[', ']'),
-        ].into_iter().collect();
+        let map: HashMap<char, char> = vec![('(', ')'), ('{', '}'), ('[', ']')]
+            .into_iter()
+            .collect();
         let mut stack = vec![];
         for char in s.chars() {
             match char {
@@ -50,9 +48,7 @@ impl Solution {
                     }
                     return false;
                 }
-                _ => {
-                    stack.push(char)
-                }
+                _ => stack.push(char),
             }
         }
         if stack.is_empty() {
