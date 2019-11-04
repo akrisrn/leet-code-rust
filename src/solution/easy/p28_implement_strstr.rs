@@ -30,6 +30,39 @@ impl Solution {
             None => -1
         }
     }
+
+    pub fn str_str_another(haystack: String, needle: String) -> i32 {
+        if needle.is_empty() {
+            return 0;
+        }
+        if haystack.len() < needle.len() {
+            return -1;
+        }
+        // easy solution
+        // haystack.find(&needle).map_or(-1_i32, |v| v as i32)
+
+        // naive solution
+        let haystack_chars: Vec<char> = haystack.chars().collect();
+        let needle_chars: Vec<char> = needle.chars().collect();
+        let mut curr_idx = 0;
+        let stop_pos = haystack_chars.len() - needle_chars.len() + 1;
+        loop {
+            let mut i = curr_idx;
+            let mut j = 0;
+            while haystack_chars[i] == needle_chars[j] {
+                i += 1;
+                j += 1;
+                if j == needle_chars.len() {
+                    return curr_idx as i32;
+                }
+            }
+            curr_idx += 1;
+            if curr_idx >= stop_pos {
+                break;
+            }
+        }
+        return -1;
+    }
 }
 
 #[test]
