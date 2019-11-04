@@ -25,27 +25,9 @@ impl Solution {
         if needle.is_empty() {
             return 0;
         }
-        let mut index = -1;
-        let mut needle_index = 0;
-        let needle_bytes = needle.as_bytes();
-        for (i, byte) in haystack.bytes().enumerate() {
-            if byte == needle_bytes[needle_index] {
-                if needle_index == 0 {
-                    index = i as i32;
-                }
-                needle_index += 1;
-                if needle_index >= needle_bytes.len() {
-                    break;
-                }
-            } else {
-                index = -1;
-                needle_index = 0;
-            }
-        }
-        if needle_index < needle_bytes.len() {
-            -1
-        } else {
-            index
+        match haystack.find(&needle) {
+            Some(i) => i as i32,
+            None => -1
         }
     }
 }
@@ -68,4 +50,9 @@ fn test_c() {
 #[test]
 fn test_d() {
     assert_eq!(Solution::str_str("aaa".to_string(), "aaaa".to_string()), -1)
+}
+
+#[test]
+fn test_e() {
+    assert_eq!(Solution::str_str("mississippi".to_string(), "issip".to_string()), 4)
 }
