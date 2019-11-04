@@ -31,6 +31,40 @@ impl Solution {
             _ => None
         }
     }
+
+    pub fn merge_two_lists_another(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        let mut dummy_head = Some(Box::new(ListNode { val: 0, next: None }));
+        let mut head = &mut dummy_head;
+        let (mut l1, mut l2) = (l1, l2);
+        while l1.is_some() || l2.is_some() {
+            if l1.is_none() {
+                head.as_mut()?.next = l2;
+                break;
+            } else if l2.is_none() {
+                head.as_mut()?.next = l1;
+                break;
+            }
+            head.as_mut()?.next = if l1.as_ref()?.val < l2.as_ref()?.val {
+                let (origin, next) = Self::take_head(l1);
+                l1 = origin;
+                next
+            } else {
+                let (origin, next) = Self::take_head(l2);
+                l2 = origin;
+                next
+            };
+            head = &mut head.as_mut()?.next;
+        }
+        dummy_head?.next
+    }
+
+    #[inline(always)]
+    fn take_head(mut l: Option<Box<ListNode>>) -> (Option<Box<ListNode>>, Option<Box<ListNode>>) {
+        let l_next = l.as_mut().unwrap().next.take();
+        let next = l.take();
+        l = l_next;
+        (l, next)
+    }
 }
 
 #[derive(PartialEq, Eq, Clone, Debug)]
