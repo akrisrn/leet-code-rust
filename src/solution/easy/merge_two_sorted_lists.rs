@@ -33,7 +33,7 @@ impl Solution {
     }
 
     pub fn merge_two_lists_another(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        let mut dummy_head = Some(Box::new(ListNode { val: 0, next: None }));
+        let mut dummy_head = Some(Box::new(ListNode::new(0)));
         let mut head = &mut dummy_head;
         let (mut l1, mut l2) = (l1, l2);
         while l1.is_some() || l2.is_some() {
