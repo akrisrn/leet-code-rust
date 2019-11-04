@@ -36,5 +36,29 @@ use crate::Solution;
 /// > It doesn't matter what values are set beyond the returned length.
 ///
 impl Solution {
-    pub fn remove_element(nums: &mut Vec<i32>, val: i32) -> i32 {}
+    pub fn remove_element(nums: &mut Vec<i32>, val: i32) -> i32 {
+        let mut i: i32 = 0;
+        while i < nums.len() as i32 {
+            if nums[i as usize] == val {
+                nums.remove(i as usize);
+                i -= 1;
+            }
+            i += 1;
+        }
+        nums.len() as i32
+    }
+}
+
+#[test]
+fn test_a() {
+    let mut nums = vec![3, 2, 2, 3];
+    assert_eq!(Solution::remove_element(&mut nums, 3), 2);
+    assert_eq!(nums[..2].to_vec(), vec![2, 2])
+}
+
+#[test]
+fn test_b() {
+    let mut nums = vec![0, 1, 2, 2, 3, 0, 4, 2];
+    assert_eq!(Solution::remove_element(&mut nums, 2), 5);
+    assert_eq!(nums[..5].to_vec(), vec![0, 1, 3, 0, 4])
 }
