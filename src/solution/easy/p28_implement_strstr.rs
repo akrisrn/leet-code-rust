@@ -42,7 +42,11 @@ impl Solution {
                 needle_index = 0;
             }
         }
-        index
+        if needle_index < needle_bytes.len() {
+            -1
+        } else {
+            index
+        }
     }
 }
 
@@ -59,4 +63,9 @@ fn test_b() {
 #[test]
 fn test_c() {
     assert_eq!(Solution::str_str("hello".to_string(), "".to_string()), 0)
+}
+
+#[test]
+fn test_d() {
+    assert_eq!(Solution::str_str("aaa".to_string(), "aaaa".to_string()), -1)
 }
