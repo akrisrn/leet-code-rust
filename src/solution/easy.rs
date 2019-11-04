@@ -11,3 +11,4 @@ mod p9_palindrome_number;
 mod p27_remove_element;
 mod p28_implement_strstr;
 mod p35_search_insert_position;
+mod p38_count_and_say;
