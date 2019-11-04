@@ -47,6 +47,17 @@ impl Solution {
         }
         nums.len() as i32
     }
+
+    pub fn remove_element_another(nums: &mut Vec<i32>, val: i32) -> i32 {
+        let mut counter = 0;
+        for (index, element) in nums.clone().iter().enumerate() {
+            if *element == val {
+                nums.remove(index - counter);
+                counter += 1;
+            }
+        }
+        nums.len() as i32
+    }
 }
 
 #[test]
