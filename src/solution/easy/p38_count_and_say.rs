@@ -25,6 +25,10 @@ use crate::Solution;
 /// > Input: 4
 /// > Output: "1211"
 ///
+/// # Misleading description
+///
+/// https://leetcode.com/problems/count-and-say/discuss/16015/Please-change-the-misleading-description
+///
 impl Solution {
     pub fn count_and_say(n: i32) -> String {}
 }
