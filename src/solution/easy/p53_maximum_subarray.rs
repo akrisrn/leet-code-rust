@@ -36,6 +36,22 @@ impl Solution {
         }
         max
     }
+
+    pub fn max_sub_array_another(nums: Vec<i32>) -> i32 {
+        if nums.is_empty() {
+            return 0;
+        }
+        let mut sum = 0;
+        let mut max = i32::min_value();
+        for i in 0..nums.len() {
+            sum += nums[i];
+            max = i32::max(max, sum);
+            if sum <= 0 {
+                sum = 0;
+            }
+        }
+        max
+    }
 }
 
 #[test]
