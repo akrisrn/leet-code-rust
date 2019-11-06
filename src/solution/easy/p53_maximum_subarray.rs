@@ -18,16 +18,20 @@ use crate::Solution;
 ///
 impl Solution {
     pub fn max_sub_array(nums: Vec<i32>) -> i32 {
-        let mut max = 0;
+        if nums.is_empty() {
+            return 0;
+        }
+        let mut max = nums[0];
         let mut cur = 0;
         for num in nums {
-            if cur + num <= 0 {
+            let sum = cur + num;
+            if sum <= 0 {
                 cur = 0;
             } else {
-                cur += num;
-                if cur > max {
-                    max = cur;
-                }
+                cur = sum;
+            }
+            if sum > max {
+                max = sum;
             }
         }
         max
@@ -37,4 +41,14 @@ impl Solution {
 #[test]
 fn test_a() {
     assert_eq!(Solution::max_sub_array(vec![-2, 1, -3, 4, -1, 2, 1, -5, 4]), 6)
+}
+
+#[test]
+fn test_b() {
+    assert_eq!(Solution::max_sub_array(vec![-1]), -1)
+}
+
+#[test]
+fn test_c() {
+    assert_eq!(Solution::max_sub_array(vec![]), 0)
 }
