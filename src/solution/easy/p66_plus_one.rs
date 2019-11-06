@@ -19,18 +19,19 @@ use crate::Solution;
 ///
 impl Solution {
     pub fn plus_one(digits: Vec<i32>) -> Vec<i32> {
-        let mut num = 0_u64;
-        let mut len = digits.len() as u32;
-        for i in 0..len {
-            num += 10_u64.pow(len - i - 1) * digits[i as usize] as u64
+        let mut new = digits;
+        let mut i = new.len() - 1;
+        new[i] += 1;
+        while new[i] == 10 {
+            new[i] = 0;
+            if i == 0 {
+                new.insert(0, 1);
+                break;
+            }
+            i -= 1;
+            new[i] += 1;
         }
-        num += 1;
-        let mut result = vec![];
-        len = (num as f64).log10() as u32 + 1;
-        for i in 0..len {
-            result.push((num / 10_u64.pow(len - i - 1) % 10) as i32)
-        }
-        result
+        new
     }
 }
 
@@ -47,4 +48,14 @@ fn test_b() {
 #[test]
 fn test_c() {
     assert_eq!(Solution::plus_one(vec![9, 8, 7, 6, 5, 4, 3, 2, 1, 0]), vec![9, 8, 7, 6, 5, 4, 3, 2, 1, 1])
+}
+
+#[test]
+fn test_d() {
+    assert_eq!(Solution::plus_one(vec![7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2, 8, 4, 3, 7, 9, 5, 7, 7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 6]), vec![7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2, 8, 4, 3, 7, 9, 5, 7, 7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 7])
+}
+
+#[test]
+fn test_e() {
+    assert_eq!(Solution::plus_one(vec![9, 9, 9, 9, 9, 9, 9, 9, 9]), vec![1, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 }
