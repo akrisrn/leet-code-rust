@@ -30,5 +30,39 @@ use crate::Solution;
 /// https://leetcode.com/problems/count-and-say/discuss/16015/Please-change-the-misleading-description
 ///
 impl Solution {
-    pub fn count_and_say(n: i32) -> String {}
+    pub fn count_and_say(n: i32) -> String {
+        if n == 1 {
+            return "1".to_string();
+        }
+        let mut result = String::new();
+        let chars: Vec<char> = Solution::count_and_say(n - 1).chars().collect();
+        let mut count = (chars[0], 0);
+        for ch in chars {
+            if ch == count.0 {
+                count.1 += 1
+            } else {
+                result.push_str(count.1.to_string().as_ref());
+                result.push_str(count.0.to_string().as_ref());
+                count = (ch, 1)
+            }
+        }
+        result.push_str(count.1.to_string().as_ref());
+        result.push_str(count.0.to_string().as_ref());
+        result
+    }
+}
+
+#[test]
+fn test_a() {
+    assert_eq!(Solution::count_and_say(1), "1".to_string())
+}
+
+#[test]
+fn test_b() {
+    assert_eq!(Solution::count_and_say(4), "1211".to_string())
+}
+
+#[test]
+fn test_c() {
+    assert_eq!(Solution::count_and_say(7), "13112221".to_string())
 }
