@@ -15,7 +15,7 @@ use crate::Solution;
 impl Solution {
     pub fn length_of_last_word(s: String) -> i32 {
         let a: Vec<&str> = s.split(" ").collect();
-        if a.len() < 2 {
+        if a.is_empty() {
             return 0;
         }
         a[a.len() - 1].len() as i32
@@ -25,4 +25,9 @@ impl Solution {
 #[test]
 fn test_a() {
     assert_eq!(Solution::length_of_last_word("Hello World".to_string()), 5)
+}
+
+#[test]
+fn test_b() {
+    assert_eq!(Solution::length_of_last_word("a".to_string()), 1)
 }
