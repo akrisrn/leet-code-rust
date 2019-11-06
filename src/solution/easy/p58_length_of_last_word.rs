@@ -13,5 +13,16 @@ use crate::Solution;
 /// > Output: 5
 ///
 impl Solution {
-    pub fn length_of_last_word(s: String) -> i32 {}
+    pub fn length_of_last_word(s: String) -> i32 {
+        let a: Vec<&str> = s.split(" ").collect();
+        if a.len() < 2 {
+            return 0;
+        }
+        a[a.len() - 1].len() as i32
+    }
+}
+
+#[test]
+fn test_a() {
+    assert_eq!(Solution::length_of_last_word("Hello World".to_string()), 5)
 }
