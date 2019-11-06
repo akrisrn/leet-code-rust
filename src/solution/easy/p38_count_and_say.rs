@@ -53,9 +53,8 @@ impl Solution {
 
     pub fn count_and_say_another(n: i32) -> String {
         let mut out = "1".to_string();
-        for i in 1..n {
+        for _i in 1..n {
             let mut x = vec![];
-            let mut count = 1;
             let mut iter = out.chars().peekable();
             while let Some(c) = iter.next() {
                 let mut count = 1;
