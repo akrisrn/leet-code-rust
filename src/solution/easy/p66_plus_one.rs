@@ -19,16 +19,16 @@ use crate::Solution;
 ///
 impl Solution {
     pub fn plus_one(digits: Vec<i32>) -> Vec<i32> {
-        let mut num = 0;
+        let mut num = 0_u64;
         let mut len = digits.len() as u32;
         for i in 0..len {
-            num += 10_i32.pow(len - i - 1) * digits[i as usize]
+            num += 10_u64.pow(len - i - 1) * digits[i as usize] as u64
         }
         num += 1;
         let mut result = vec![];
         len = (num as f64).log10() as u32 + 1;
         for i in 0..len {
-            result.push(num / 10_i32.pow(len - i - 1) % 10)
+            result.push((num / 10_u64.pow(len - i - 1) % 10) as i32)
         }
         result
     }
@@ -42,4 +42,9 @@ fn test_a() {
 #[test]
 fn test_b() {
     assert_eq!(Solution::plus_one(vec![4, 3, 2, 1]), vec![4, 3, 2, 2])
+}
+
+#[test]
+fn test_c() {
+    assert_eq!(Solution::plus_one(vec![9, 8, 7, 6, 5, 4, 3, 2, 1, 0]), vec![9, 8, 7, 6, 5, 4, 3, 2, 1, 1])
 }
