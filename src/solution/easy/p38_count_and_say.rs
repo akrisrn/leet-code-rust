@@ -50,6 +50,28 @@ impl Solution {
         result.push_str(count.0.to_string().as_ref());
         result
     }
+
+    pub fn count_and_say_another(n: i32) -> String {
+        let mut out = "1".to_string();
+        for i in 1..n {
+            let mut x = vec![];
+            let mut count = 1;
+            let mut iter = out.chars().peekable();
+            while let Some(c) = iter.next() {
+                let mut count = 1;
+                while let Some(o) = iter.peek() {
+                    if c != *o {
+                        break;
+                    }
+                    count += 1;
+                    iter.next();
+                }
+                x.push(format!("{}{}", count, c));
+            }
+            out = x.join("");
+        }
+        out
+    }
 }
 
 #[test]
