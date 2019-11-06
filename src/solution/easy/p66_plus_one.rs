@@ -18,5 +18,28 @@ use crate::Solution;
 /// > Explanation: The array represents the integer 4321.
 ///
 impl Solution {
-    pub fn plus_one(digits: Vec<i32>) -> Vec<i32> {}
+    pub fn plus_one(digits: Vec<i32>) -> Vec<i32> {
+        let mut num = 0;
+        let mut len = digits.len() as u32;
+        for i in 0..len {
+            num += 10_i32.pow(len - i - 1) * digits[i as usize]
+        }
+        num += 1;
+        let mut result = vec![];
+        len = (num as f64).log10() as u32 + 1;
+        for i in 0..len {
+            result.push(num / 10_i32.pow(len - i - 1) % 10)
+        }
+        result
+    }
+}
+
+#[test]
+fn test_a() {
+    assert_eq!(Solution::plus_one(vec![1, 2, 3]), vec![1, 2, 4])
+}
+
+#[test]
+fn test_b() {
+    assert_eq!(Solution::plus_one(vec![4, 3, 2, 1]), vec![4, 3, 2, 2])
 }
