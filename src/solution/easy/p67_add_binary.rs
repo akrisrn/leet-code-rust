@@ -47,6 +47,28 @@ impl Solution {
         }
         chars_c.iter().rev().collect::<String>()
     }
+
+    pub fn add_binary_another(a: String, b: String) -> String {
+        let mut res: Vec<char> = vec![];
+        let v_a: Vec<char> = a.chars().collect();
+        let v_b: Vec<char> = b.chars().collect();
+        let mut carry = 0;
+        let mut idx_a = a.len();
+        let mut idx_b = b.len();
+        while idx_a > 0 || idx_b > 0 || carry == 1 {
+            if idx_a > 0 {
+                idx_a -= 1;
+                carry += v_a[idx_a] as u8 - 48;
+            }
+            if idx_b > 0 {
+                idx_b -= 1;
+                carry += v_b[idx_b] as u8 - 48;
+            }
+            res.push((carry % 2 + 48) as char);
+            carry /= 2;
+        }
+        res.iter().rev().collect::<String>()
+    }
 }
 
 #[test]
