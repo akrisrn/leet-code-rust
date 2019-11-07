@@ -73,3 +73,8 @@ fn test_f() {
 fn test_g() {
     assert_eq!(Solution::climb_stairs(35), 14930352)
 }
+
+#[test]
+fn test_h() {
+    assert_eq!(Solution::climb_stairs(44), 1134903170)
+}
