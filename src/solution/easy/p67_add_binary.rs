@@ -14,7 +14,36 @@ use crate::Solution;
 /// > Output: "10101"
 ///
 impl Solution {
-    pub fn add_binary(a: String, b: String) -> String {}
+    pub fn add_binary(a: String, b: String) -> String {
+        let bytes_a = a.into_bytes();
+        let bytes_b = b.into_bytes();
+        let mut chars_c = vec![];
+        let mut i_a = bytes_a.len();
+        let mut i_b = bytes_b.len();
+        let mut need_plus = 0;
+        while i_a > 0 || i_b > 0 || need_plus > 0 {
+            let mut c = 0;
+            if i_a > 0 {
+                c += bytes_a[i_a - 1] - 48;
+                i_a -= 1;
+            }
+            if i_b > 0 {
+                c += bytes_b[i_b - 1] - 48;
+                i_b -= 1;
+            }
+            if need_plus > 0 {
+                c += need_plus;
+                need_plus = 0;
+            }
+            if c > 1 {
+                chars_c.push('0');
+                need_plus = c - 1
+            } else {
+                chars_c.push((c + 48) as char)
+            }
+        }
+        chars_c.iter().rev().collect::<String>()
+    }
 }
 
 #[test]
