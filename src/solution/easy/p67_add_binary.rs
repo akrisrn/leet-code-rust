@@ -69,3 +69,11 @@ fn test_c() {
         "1000000000".to_string()
     )
 }
+
+#[test]
+fn test_d() {
+    assert_eq!(
+        Solution::add_binary("1111".to_string(), "1111".to_string()),
+        "11110".to_string()
+    )
+}
