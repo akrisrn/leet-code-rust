@@ -22,7 +22,26 @@ use crate::Solution;
 /// > 3. 2 steps + 1 step
 ///
 impl Solution {
-    pub fn climb_stairs(n: i32) -> i32 {}
+    pub fn climb_stairs(n: i32) -> i32 {
+        let max_digits = n;
+        let min_digits = (n as f64 / 2.0).ceil() as i32;
+        let mut count = 1;
+        let mut count_2 = 1;
+        for i in (min_digits..max_digits).rev() {
+            // c(count_2, i)
+            let mut a = 1;
+            for j in (i - count_2 + 1)..=i {
+                a *= j;
+            }
+            let mut b = 1;
+            for j in 1..=count_2 {
+                b *= j;
+            }
+            count += a / b;
+            count_2 += 1;
+        }
+        count
+    }
 }
 
 #[test]
