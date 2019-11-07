@@ -27,7 +27,7 @@ impl Solution {
         }
         match haystack.find(&needle) {
             Some(i) => i as i32,
-            None => -1
+            None => -1,
         }
     }
 
@@ -72,7 +72,10 @@ fn test_a() {
 
 #[test]
 fn test_b() {
-    assert_eq!(Solution::str_str("aaaaa".to_string(), "bba".to_string()), -1)
+    assert_eq!(
+        Solution::str_str("aaaaa".to_string(), "bba".to_string()),
+        -1
+    )
 }
 
 #[test]
@@ -87,5 +90,8 @@ fn test_d() {
 
 #[test]
 fn test_e() {
-    assert_eq!(Solution::str_str("mississippi".to_string(), "issip".to_string()), 4)
+    assert_eq!(
+        Solution::str_str("mississippi".to_string(), "issip".to_string()),
+        4
+    )
 }

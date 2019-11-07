@@ -19,10 +19,16 @@ impl Solution {
 
 #[test]
 fn test_a() {
-    assert_eq!(Solution::add_binary("11".to_string(), "1".to_string()), "100".to_string())
+    assert_eq!(
+        Solution::add_binary("11".to_string(), "1".to_string()),
+        "100".to_string()
+    )
 }
 
 #[test]
 fn test_b() {
-    assert_eq!(Solution::add_binary("1010".to_string(), "1011".to_string()), "10101".to_string())
+    assert_eq!(
+        Solution::add_binary("1010".to_string(), "1011".to_string()),
+        "10101".to_string()
+    )
 }

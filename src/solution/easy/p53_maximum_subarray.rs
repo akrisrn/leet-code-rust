@@ -56,7 +56,10 @@ impl Solution {
 
 #[test]
 fn test_a() {
-    assert_eq!(Solution::max_sub_array(vec![-2, 1, -3, 4, -1, 2, 1, -5, 4]), 6)
+    assert_eq!(
+        Solution::max_sub_array(vec![-2, 1, -3, 4, -1, 2, 1, -5, 4]),
+        6
+    )
 }
 
 #[test]
