@@ -34,3 +34,18 @@ fn test_a() {
 fn test_b() {
     assert_eq!(Solution::climb_stairs(3), 3)
 }
+
+#[test]
+fn test_c() {
+    assert_eq!(Solution::climb_stairs(4), 5)
+}
+
+#[test]
+fn test_d() {
+    assert_eq!(Solution::climb_stairs(5), 8)
+}
+
+#[test]
+fn test_f() {
+    assert_eq!(Solution::climb_stairs(6), 13)
+}
