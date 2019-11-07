@@ -30,11 +30,11 @@ impl Solution {
         for i in (min_digits..max_digits).rev() {
             // c(count_2, i)
             let mut a = 1;
-            for j in (i - count_2 + 1) as u64..=i as u64 {
+            for j in (i - count_2 + 1) as u128..=i as u128 {
                 a *= j;
             }
             let mut b = 1;
-            for j in 1..=count_2 as u64 {
+            for j in 1..=count_2 as u128 {
                 b *= j;
             }
             count += a / b;
