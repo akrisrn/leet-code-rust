@@ -70,16 +70,16 @@ fn test_d() {
 }
 
 #[test]
-fn test_f() {
+fn test_e() {
     assert_eq!(Solution::climb_stairs(6), 13)
 }
 
 #[test]
-fn test_g() {
+fn test_f() {
     assert_eq!(Solution::climb_stairs(35), 14930352)
 }
 
 #[test]
-fn test_h() {
+fn test_g() {
     assert_eq!(Solution::climb_stairs(44), 1134903170)
 }
