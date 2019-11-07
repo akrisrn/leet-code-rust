@@ -17,3 +17,4 @@ mod p67_add_binary;
 mod p7_reverse_integer;
 mod p9_palindrome_number;
 mod p70_climbing_stairs;
+mod p101_symmetric_tree;
