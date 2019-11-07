@@ -32,3 +32,11 @@ fn test_b() {
         "10101".to_string()
     )
 }
+
+#[test]
+fn test_c() {
+    assert_eq!(
+        Solution::add_binary("111111111".to_string(), "1".to_string()),
+        "1000000000".to_string()
+    )
+}
