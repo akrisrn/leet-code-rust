@@ -42,6 +42,11 @@ impl Solution {
         }
         count as i32
     }
+
+    pub fn climb_stairs_another(n: i32) -> i32 {
+        // Fibonacci sequence
+        (0..n).fold((0, 1), |acc, _| (acc.1, acc.0 + acc.1)).1
+    }
 }
 
 #[test]
