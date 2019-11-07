@@ -35,7 +35,10 @@ impl Solution {
                 c += need_plus;
                 need_plus = 0;
             }
-            if c > 1 {
+            if c == 3 {
+                chars_c.push('1');
+                need_plus = c - 2
+            } else if c == 2 {
                 chars_c.push('0');
                 need_plus = c - 1
             } else {
