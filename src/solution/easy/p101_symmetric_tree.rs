@@ -49,6 +49,34 @@ impl Solution {
             _ => false,
         }
     }
+
+    pub fn is_symmetric_another(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+        let mut stack = vec![];
+        stack.push(root.clone());
+        stack.push(root);
+        while !stack.is_empty() {
+            let left = stack.pop().unwrap();
+            let right = stack.pop().unwrap();
+            match (left, right) {
+                (Some(left_node), Some(right_node)) => {
+                    let left_borrow = left_node.borrow();
+                    let right_borrow = right_node.borrow();
+                    if left_borrow.val != right_borrow.val {
+                        return false;
+                    }
+                    stack.push(left_borrow.left.clone());
+                    stack.push(right_borrow.right.clone());
+                    stack.push(left_borrow.right.clone());
+                    stack.push(right_borrow.left.clone());
+                }
+                (None, None) => {}
+                _ => {
+                    return false;
+                }
+            }
+        }
+        true
+    }
 }
 
 #[derive(Debug, PartialEq, Eq)]
