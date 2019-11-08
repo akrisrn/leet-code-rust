@@ -1,6 +1,6 @@
 use crate::Solution;
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 
 /// https://leetcode.com/problems/symmetric-tree/
 ///
@@ -24,7 +24,31 @@ use std::cell::RefCell;
 /// Note: Bonus points if you could solve it both recursively and iteratively.
 ///
 impl Solution {
-    pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool {}
+    pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+        Solution::is_mirror(&root, &root)
+    }
+
+    fn is_mirror(
+        left: &Option<Rc<RefCell<TreeNode>>>,
+        right: &Option<Rc<RefCell<TreeNode>>>,
+    ) -> bool {
+        match (left, right) {
+            (None, None) => true,
+            (Some(left_node), Some(right_node)) => {
+                let left_borrow = left_node.borrow();
+                let right_borrow = right_node.borrow();
+                if left_borrow.val == right_borrow.val
+                    && Solution::is_mirror(&left_borrow.right, &right_borrow.left)
+                    && Solution::is_mirror(&left_borrow.left, &right_borrow.right)
+                {
+                    true
+                } else {
+                    false
+                }
+            }
+            _ => false,
+        }
+    }
 }
 
 #[derive(Debug, PartialEq, Eq)]
