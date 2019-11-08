@@ -21,7 +21,29 @@ use std::rc::Rc;
 /// return its depth = 3.
 ///
 impl Solution {
-    pub fn max_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {}
+    pub fn max_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        let mut max = 0;
+        match root {
+            Some(node) => {
+                Solution::rec(node, 1, &mut max);
+            }
+            None => {}
+        }
+        max
+    }
+
+    fn rec(node: Rc<RefCell<TreeNode>>, lv: i32, max: &mut i32) {
+        if lv > *max {
+            *max = lv
+        }
+        let node_borrow = node.borrow();
+        if let Some(left) = &node_borrow.left {
+            Solution::rec(Rc::clone(left), lv + 1, max);
+        }
+        if let Some(right) = &node_borrow.right {
+            Solution::rec(Rc::clone(right), lv + 1, max)
+        }
+    }
 }
 
 #[derive(Debug, PartialEq, Eq)]
