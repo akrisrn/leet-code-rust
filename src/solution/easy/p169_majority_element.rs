@@ -43,3 +43,8 @@ fn test_a() {
 fn test_b() {
     assert_eq!(Solution::majority_element(vec![2, 2, 1, 1, 1, 2, 2]), 2)
 }
+
+#[test]
+fn test_c() {
+    assert_eq!(Solution::majority_element(vec![1]), 1)
+}
