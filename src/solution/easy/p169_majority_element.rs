@@ -35,6 +35,21 @@ impl Solution {
         }
         maj
     }
+
+    pub fn majority_element_0ms(nums: Vec<i32>) -> i32 {
+        if nums.is_empty() {
+            return 0;
+        }
+        let mut count = 0;
+        let mut maj = nums[0];
+        for num in nums {
+            if count == 0 {
+                maj = num;
+            }
+            count += if num == maj { 1 } else { -1 };
+        }
+        return maj;
+    }
 }
 
 #[test]
