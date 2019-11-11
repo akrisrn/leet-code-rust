@@ -1,4 +1,5 @@
 use crate::Solution;
+use std::collections::HashMap;
 
 /// https://leetcode.com/problems/majority-element/
 ///
@@ -15,7 +16,22 @@ use crate::Solution;
 /// > Output: 2
 ///
 impl Solution {
-    pub fn majority_element(nums: Vec<i32>) -> i32 {}
+    pub fn majority_element(nums: Vec<i32>) -> i32 {
+        let mut maj = 0;
+        let mut map = HashMap::new();
+        for num in &nums {
+            if map.contains_key(num) {
+                *map.get_mut(num).unwrap() += 1;
+                if map[num] > nums.len() / 2 {
+                    maj = *num;
+                    break;
+                }
+            } else {
+                map.insert(num, 1);
+            }
+        }
+        maj
+    }
 }
 
 #[test]
