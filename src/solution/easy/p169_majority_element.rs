@@ -17,7 +17,10 @@ use std::collections::HashMap;
 ///
 impl Solution {
     pub fn majority_element(nums: Vec<i32>) -> i32 {
-        let mut maj = 0;
+        if nums.is_empty() {
+            return 0;
+        }
+        let mut maj = nums[0];
         let mut map = HashMap::new();
         for num in &nums {
             if map.contains_key(num) {
