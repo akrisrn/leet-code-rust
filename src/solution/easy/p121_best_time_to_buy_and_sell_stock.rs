@@ -19,7 +19,20 @@ use crate::Solution;
 /// > Explanation: In this case, no transaction is done, i.e. max profit = 0.
 ///
 impl Solution {
-    pub fn max_profit(prices: Vec<i32>) -> i32 {}
+    pub fn max_profit(prices: Vec<i32>) -> i32 {
+        let mut profit = 0;
+        let mut buy = prices[0];
+        for i in 1..prices.len() {
+            let price = prices[i];
+            if price - buy > profit {
+                profit = price - buy;
+            }
+            if price < buy {
+                buy = price;
+            }
+        }
+        profit
+    }
 }
 
 #[test]
