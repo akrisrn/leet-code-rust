@@ -44,3 +44,8 @@ fn test_a() {
 fn test_b() {
     assert_eq!(Solution::max_profit(vec![7, 6, 4, 3, 1]), 0)
 }
+
+#[test]
+fn test_c() {
+    assert_eq!(Solution::max_profit(vec![]), 0)
+}
