@@ -18,7 +18,9 @@ use crate::Solution;
 /// >              the decimal part is truncated, 2 is returned.
 ///
 impl Solution {
-    pub fn my_sqrt(x: i32) -> i32 {}
+    pub fn my_sqrt(x: i32) -> i32 {
+        (x as f64).sqrt() as i32
+    }
 }
 
 #[test]
