@@ -24,5 +24,8 @@ impl Solution {
 
 #[test]
 fn test_a() {
-    assert_eq!(Solution::merge(&mut vec![1, 2, 3, 0, 0, 0], 3, &mut vec![2, 5, 6], 3), vec![1, 2, 2, 3, 5, 6])
+    assert_eq!(
+        Solution::merge(&mut vec![1, 2, 3, 0, 0, 0], 3, &mut vec![2, 5, 6], 3),
+        vec![1, 2, 2, 3, 5, 6]
+    )
 }

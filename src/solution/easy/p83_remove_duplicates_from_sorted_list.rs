@@ -25,10 +25,7 @@ pub struct ListNode {
 impl ListNode {
     #[inline]
     fn new(val: i32) -> Self {
-        ListNode {
-            next: None,
-            val,
-        }
+        ListNode { next: None, val }
     }
 }
 
@@ -44,7 +41,10 @@ fn test_a() {
     let e = ListNode::new(2);
     d.next = Some(Box::new(e));
 
-    assert_eq!(Solution::delete_duplicates(Some(Box::new(a))), Some(Box::new(d)))
+    assert_eq!(
+        Solution::delete_duplicates(Some(Box::new(a))),
+        Some(Box::new(d))
+    )
 }
 
 #[test]
@@ -65,5 +65,8 @@ fn test_b() {
     g.next = Some(Box::new(h));
     f.next = Some(Box::new(g));
 
-    assert_eq!(Solution::delete_duplicates(Some(Box::new(a))), Some(Box::new(f)))
+    assert_eq!(
+        Solution::delete_duplicates(Some(Box::new(a))),
+        Some(Box::new(f))
+    )
 }
