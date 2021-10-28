@@ -1,6 +1,7 @@
-use crate::Solution;
 use std::cell::RefCell;
 use std::rc::Rc;
+
+use crate::Solution;
 
 /// https://leetcode.com/problems/symmetric-tree/
 ///

@@ -1,5 +1,6 @@
-use crate::Solution;
 use std::collections::HashMap;
+
+use crate::Solution;
 
 /// https://leetcode.com/problems/roman-to-integer/
 ///
